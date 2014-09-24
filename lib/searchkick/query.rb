@@ -97,7 +97,7 @@ module Searchkick
               }
 
               if field == "_all" or field.end_with?(".analyzed")
-                shared_options[:cutoff_frequency] = 0.001 unless operator == "and"
+                shared_options[:cutoff_frequency] = 0.0001 unless operator == "and"
                 qs.concat [
                   shared_options.merge(boost: 10 * factor, analyzer: "searchkick_search"),
                   shared_options.merge(boost: 10 * factor, analyzer: "searchkick_search2")
